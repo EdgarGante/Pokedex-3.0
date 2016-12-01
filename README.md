@@ -3,4 +3,14 @@
 <a href="https://developer.apple.com/swift/"><img src="https://camo.githubusercontent.com/ade60b3559b820a4c7f84d4b7e2de22b97654e25/68747470733a2f2f696d672e736869656c64732e696f2f62616467652f506c6174666f726d732d694f532d6c69676874677261792e7376673f7374796c653d666c6174" alt="Platforms iOS" data-canonical-src="https://img.shields.io/badge/Platforms-iOS-lightgray.svg?style=flat" style="max-width:100%;"></a>
 <a href="https://developer.apple.com/swift/"><img src="https://camo.githubusercontent.com/e341277687584eb78757aef0e566f6ca968e7f9e/68747470733a2f2f696d672e736869656c64732e696f2f62616467652f58636f64652d382e302b2d626c75652e7376673f7374796c653d666c6174" alt="Xcode 8.0+" data-canonical-src="https://img.shields.io/badge/Xcode-8.0+-blue.svg?style=flat" style="max-width:100%;"></a></p>
 
+<h2>Requirements</h2>
+
+iOS 9.1+
+
+Xcode 8.0
+
+Swift 3.0
+
+
+
 <a href="http://imgur.com/LxEoJS5"><img src="http://i.imgur.com/LxEoJS5.png" title="source: imgur.com" /></a>
