@@ -15,17 +15,26 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
     
     var pokemon = [Pokemon]()
     var filteredPokemon = [Pokemon]()
-    var isSearchMode = false
+    var userIsInSearchMode = false
+
 
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        searchBar.returnKeyType = UIReturnKeyType.done
+        parsePokemonCSV()
+
+        // Dissmis keyboard when tapped around
+        //Looks for single or multiple taps.
+        let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(UIInputViewController.dismissKeyboard))
+        view.addGestureRecognizer(tap)
+
 
         collection.dataSource = self
         collection.delegate = self
+        
         searchBar.delegate = self
-        parsePokemonCSV()
+        searchBar.setTextColor(color: .white)
+        searchBar.returnKeyType = .done
         
         
     }
@@ -37,7 +46,6 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
             
             let csv = try CSV(contentsOfURL: path)
             let rows = csv.rows
-            print(rows)
             
             for row in rows {
                 
@@ -59,7 +67,7 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
             
             let  poke: Pokemon!
             
-            if isSearchMode {
+            if userIsInSearchMode {
                 poke = filteredPokemon[indexPath.row]
                 cell.configureCell(poke)
             } else {
@@ -80,7 +88,7 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         
-        if isSearchMode {
+        if userIsInSearchMode {
             return filteredPokemon.count
         } else {
             
@@ -93,22 +101,22 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: 80, height: 80)
+        return CGSize(width: 90, height: 90)
     }
     
-    func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
+    func dismissKeyboard() {
+        //Causes the view (or one of its embedded text fields) to resign the first responder status.
         view.endEditing(true)
     }
     
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
         if searchBar.text == nil || searchBar.text == "" {
-            isSearchMode = false
+            userIsInSearchMode = false
             collection.reloadData()
-            view.endEditing(true)
-            
+            dismissKeyboard()
             
         } else {
-            isSearchMode =  true
+            userIsInSearchMode =  true
             
             let lower = searchBar.text!.lowercased()
             filteredPokemon = pokemon.filter({$0.name.range(of: lower) != nil})
