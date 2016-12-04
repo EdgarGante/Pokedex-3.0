@@ -19,7 +19,6 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
     var filteredPokemon = [Pokemon]()
     var userIsInSearchMode = false
 
-
     override func viewDidLoad() {
         super.viewDidLoad()
         

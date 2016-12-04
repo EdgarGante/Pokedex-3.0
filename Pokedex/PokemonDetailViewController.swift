@@ -18,8 +18,4 @@ class PokemonDetailViewController: UIViewController {
         super.viewDidLoad()
         nameLabel.text = pokemon.name
     }
-    
-
-
-
 }
