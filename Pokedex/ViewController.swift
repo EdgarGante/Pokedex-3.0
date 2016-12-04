@@ -10,6 +10,8 @@ import UIKit
 
 class ViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout, UISearchBarDelegate {
     
+    //MARK: Properties
+    
     @IBOutlet weak var collection: UICollectionView!
     @IBOutlet weak var searchBar: UISearchBar!
     
@@ -22,21 +24,20 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
         super.viewDidLoad()
         
         parsePokemonCSV()
-
-        // Dissmis keyboard when tapped around
-        //Looks for single or multiple taps.
-        let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(UIInputViewController.dismissKeyboard))
-        view.addGestureRecognizer(tap)
-
-
+        
         collection.dataSource = self
         collection.delegate = self
-        
         searchBar.delegate = self
+
+        // Dissmis keyboard when tapped around
+        let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(UIInputViewController.dismissKeyboard))
+        tap.cancelsTouchesInView = false
+        view.addGestureRecognizer(tap)
+
         searchBar.setTextColor(color: .white)
-        searchBar.returnKeyType = .done
-        
-        
+        searchBar.returnKeyType = .search
+        searchBar.keyboardAppearance = .dark
+    
     }
     
     func parsePokemonCSV() {
@@ -54,7 +55,6 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
                 
                 let poke = Pokemon(name: name, pokedexId: pokeId)
                 pokemon.append(poke)
-            
             }
             
         } catch let err as NSError {
@@ -78,11 +78,21 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
             return cell
             
         } else {
+            
             return UICollectionViewCell()
         }
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        var poke: Pokemon!
+        
+        if userIsInSearchMode {
+            poke = filteredPokemon[indexPath.row]
+        } else {
+            poke = pokemon[indexPath.row]
+        }
+        
+        performSegue(withIdentifier: "PokemonDetailIdentifier", sender: poke)
         
     }
     
@@ -91,8 +101,8 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
         if userIsInSearchMode {
             return filteredPokemon.count
         } else {
-            
         return pokemon.count
+
         }
     }
     
@@ -117,10 +127,24 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
             
         } else {
             userIsInSearchMode =  true
-            
+    
             let lower = searchBar.text!.lowercased()
             filteredPokemon = pokemon.filter({$0.name.range(of: lower) != nil})
             collection.reloadData()
+        }
+    }
+    
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        dismissKeyboard()
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "PokemonDetailIdentifier" {
+            if let detailVC = segue.destination as? PokemonDetailViewController {
+                if let poke = sender as? Pokemon {
+                    detailVC.pokemon = poke
+                }
+            }
         }
     }
 
