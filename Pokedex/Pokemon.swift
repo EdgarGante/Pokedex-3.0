@@ -81,13 +81,13 @@ class Pokemon {
         if _description == nil {
             _description = ""
         }
+        
         return _description
     }
     
     init (name: String, pokedexId: Int) {
         self._name = name
         self._pokedexID = pokedexId
-        
         self._pokemonURL = "\(URL_BASE)\(URL_POKEMON)\(self.pokedexID)"
     }
     
@@ -133,8 +133,8 @@ class Pokemon {
             }
             
             if let descriptionArray = dict["description"] as? [Dictionary<String, String>] , descriptionArray.count > 0 {
+                
                 if let url = descriptionArray[0]["resource_uri"] {
-                    
                     let descriptionURL = "\(URL_BASE)\(url)"
                     
                     Alamofire.request(descriptionURL).responseJSON(completionHandler: { (response) in
@@ -154,6 +154,5 @@ class Pokemon {
         completed()
         
         }
-    
     }
 }

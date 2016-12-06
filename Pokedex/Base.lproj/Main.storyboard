@@ -41,24 +41,27 @@
                                         <rect key="frame" x="10" y="58" width="355" height="609"/>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="wEw-2l-Is0">
-                                            <size key="itemSize" width="78" height="97"/>
+                                            <size key="itemSize" width="120" height="120"/>
                                             <size key="headerReferenceSize" width="0.0" height="0.0"/>
                                             <size key="footerReferenceSize" width="0.0" height="0.0"/>
                                             <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                         </collectionViewFlowLayout>
                                         <cells>
                                             <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="PokeCell" id="afj-JF-nYv" customClass="PokemonCollectionViewCell" customModule="Pokedex" customModuleProvider="target">
-                                                <rect key="frame" x="0.0" y="0.0" width="78" height="97"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="120" height="120"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                                                    <rect key="frame" x="0.0" y="0.0" width="78" height="97"/>
+                                                    <rect key="frame" x="0.0" y="0.0" width="120" height="120"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <subviews>
                                                         <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="25" translatesAutoresizingMaskIntoConstraints="NO" id="9UA-uJ-18z">
-                                                            <rect key="frame" x="0.0" y="0.0" width="78" height="87"/>
+                                                            <rect key="frame" x="0.0" y="0.0" width="120" height="98"/>
                                                         </imageView>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Pikachu" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="6" translatesAutoresizingMaskIntoConstraints="NO" id="QCJ-fX-X2W">
-                                                            <rect key="frame" x="0.0" y="88" width="78" height="9"/>
+                                                            <rect key="frame" x="0.0" y="106" width="120" height="14"/>
+                                                            <constraints>
+                                                                <constraint firstAttribute="height" constant="14" id="xlj-cK-FDz"/>
+                                                            </constraints>
                                                             <fontDescription key="fontDescription" name="PokemonGB" family="Pokemon GB" pointSize="9"/>
                                                             <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                                             <nil key="highlightedColor"/>
@@ -69,7 +72,7 @@
                                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                                 <constraints>
                                                     <constraint firstAttribute="trailing" secondItem="QCJ-fX-X2W" secondAttribute="trailing" id="5uJ-mp-cMd"/>
-                                                    <constraint firstAttribute="bottom" secondItem="9UA-uJ-18z" secondAttribute="bottom" constant="10" id="DFY-Ks-3cW"/>
+                                                    <constraint firstItem="QCJ-fX-X2W" firstAttribute="top" secondItem="9UA-uJ-18z" secondAttribute="bottom" constant="8" id="CbC-lm-uJB"/>
                                                     <constraint firstItem="QCJ-fX-X2W" firstAttribute="leading" secondItem="afj-JF-nYv" secondAttribute="leading" id="IWb-tF-geD"/>
                                                     <constraint firstAttribute="trailing" secondItem="9UA-uJ-18z" secondAttribute="trailing" id="IjT-a6-aLw"/>
                                                     <constraint firstItem="9UA-uJ-18z" firstAttribute="top" secondItem="afj-JF-nYv" secondAttribute="top" id="LD8-j8-6Bl"/>
@@ -112,7 +115,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="135" y="138.38028169014083"/>
+            <point key="canvasLocation" x="133.59999999999999" y="138.0809595202399"/>
         </scene>
         <!--Pokemon Detail View Controller-->
         <scene sceneID="pwC-5g-zjd">
@@ -161,6 +164,10 @@
                                                 <subviews>
                                                     <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="25" translatesAutoresizingMaskIntoConstraints="NO" id="kLf-a8-dYu">
                                                         <rect key="frame" x="0.0" y="0.0" width="120" height="120"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="width" constant="120" id="Bx5-O1-aqD"/>
+                                                            <constraint firstAttribute="height" constant="120" id="aQn-nT-rRX"/>
+                                                        </constraints>
                                                     </imageView>
                                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="137-SM-CtD">
                                                         <rect key="frame" x="120" y="0.0" width="215" height="120"/>
