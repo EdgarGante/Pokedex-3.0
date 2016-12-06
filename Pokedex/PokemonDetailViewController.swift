@@ -31,6 +31,8 @@ class PokemonDetailViewController: UIViewController {
         super.viewDidLoad()
         
         nameLabel.text = pokemon.name.capitalized
+        descriptionLabel.setLineHeight(lineHeight: 22.0)
+
         
         let img = UIImage(named: "\(pokemon.pokedexID)")
         pokemonImage.image = img
@@ -54,12 +56,12 @@ class PokemonDetailViewController: UIViewController {
     }
     
     func updateUI() {
+        descriptionLabel.text = pokemon.pokeDescription
         attackLabel.text = pokemon.attack
         defenseLabel.text = pokemon.defense
         heightLabel.text = pokemon.height
         weightLabel.text = pokemon.weight
         typeLabel.text = pokemon.type
-        descriptionLabel.text = pokemon.description
         
         
     }
