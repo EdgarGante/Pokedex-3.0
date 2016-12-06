@@ -32,8 +32,17 @@ class PokemonDetailViewController: UIViewController {
         
         nameLabel.text = pokemon.name.capitalized
         
+        let img = UIImage(named: "\(pokemon.pokedexID)")
+        pokemonImage.image = img
+        currentEvolution.image = img
+        pokemonIdLabel.text = "\(pokemon.pokedexID)"
+        
         bckBtn.isEnabled = true
         bckBtn.isUserInteractionEnabled = true
+        
+        pokemon.downloadPokemonDetails {
+            self.updateUI()
+        }
     }
     
     override var prefersStatusBarHidden: Bool {
@@ -44,6 +53,15 @@ class PokemonDetailViewController: UIViewController {
         dismiss(animated: true, completion: nil)
     }
     
-
-
+    func updateUI() {
+        attackLabel.text = pokemon.attack
+        defenseLabel.text = pokemon.defense
+        heightLabel.text = pokemon.height
+        weightLabel.text = pokemon.weight
+        typeLabel.text = pokemon.type
+        descriptionLabel.text = pokemon.description
+        
+        
+    }
+    
 }
