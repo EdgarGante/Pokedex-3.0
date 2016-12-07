@@ -185,6 +185,7 @@ class Pokemon {
             if let evolutions = dict["evolutions"] as? [Dictionary<String, AnyObject>] , evolutions.count > 0 {
                 
                 if  let nextEvo = evolutions[0]["to"] as? String {
+                    
                     if nextEvo.range(of: "mega") == nil {
                         self._nextEvolutionName = nextEvo
                         
@@ -199,6 +200,7 @@ class Pokemon {
                                 
                                 if let lvl = levelAvailable as? Int {
                                     self._nextEvolutionLevel = "\(lvl)"
+
                                 }
                                 
                             } else {

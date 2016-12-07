@@ -23,7 +23,6 @@ class PokemonDetailViewController: UIViewController {
     @IBOutlet weak var defenseLabel: UILabel!
     @IBOutlet weak var attackLabel: UILabel!
     @IBOutlet weak var evolutionInformationLabel: UILabel!
-    @IBOutlet weak var previousEvolution: UIImageView!
     @IBOutlet weak var currentEvolution: UIImageView!
     @IBOutlet weak var nextEvolution: UIImageView!
 
@@ -31,7 +30,6 @@ class PokemonDetailViewController: UIViewController {
         super.viewDidLoad()
         
         nameLabel.text = pokemon.name.capitalized
-        descriptionLabel.setLineHeight(lineHeight: 22.0)
 
         
         let img = UIImage(named: "\(pokemon.pokedexID)")
@@ -62,6 +60,19 @@ class PokemonDetailViewController: UIViewController {
         heightLabel.text = pokemon.height
         weightLabel.text = pokemon.weight
         typeLabel.text = pokemon.type
+        
+        if pokemon.nextEvolutionId == "" {
+            evolutionInformationLabel.text = "No Evolutions"
+            nextEvolution.isHidden = true
+        } else {
+            
+            nextEvolution.isHidden = false
+            nextEvolution.image = UIImage(named: pokemon.nextEvolutionId)
+            let str = "Next Evolution: \(pokemon.nextEvolutionName) - LVL \(pokemon.nextEvolutionLevel)"
+            evolutionInformationLabel.text = str
+            
+
+        }
         
         
     }
