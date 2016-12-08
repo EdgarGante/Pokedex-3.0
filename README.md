@@ -13,5 +13,4 @@ Swift 3.0
 
 <h2>Screenshot</h2>
 
-<a href=""><img src="http://i.imgur.com/bgqw6RC.gif" title="source: imgur.com" /></a>
-
+<a href=""><img src="http://i.imgur.com/bgqw6RCl.gif" title="source: pokemon" /></a>
