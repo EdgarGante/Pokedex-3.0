@@ -11,6 +11,7 @@ Xcode 8.0
 
 Swift 3.0
 
-<h2>Screenshots</h2>
+<h2>Screenshot</h2>
 
-<iframe class="imgur-embed" width="100%" height="662" frameborder="0" src="http://i.imgur.com/bgqw6RC.gifv#embed"></iframe>
+<a href=""><img src="http://i.imgur.com/bgqw6RC.gif" title="source: imgur.com" /></a>
+
