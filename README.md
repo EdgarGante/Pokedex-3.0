@@ -12,5 +12,4 @@ Xcode 8.0
 Swift 3.0
 
 <h2>Screenshot</h2>
-
-<img src="http://i.imgur.com/bgqw6RCl.gif" title="source: pokemon" />
+<a href="http://imgur.com/WCbvXI6"><img src="http://i.imgur.com/WCbvXI6.gif" title="source: imgur.com" /></a>
